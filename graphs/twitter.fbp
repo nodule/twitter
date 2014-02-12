@@ -13,12 +13,10 @@ Log(console/log)
 
 # Api twitter -> ^twitter UpdateStatus
 # 'First ever mention of chix.io on Twitter' -> message UpdateStatus
-# UpdateStatus error -> msg Log
 # UpdateStatus out   -> msg Log
 # UpdateStatus :complete -> :start Search
 
 Api twitter -> ^twitter Search
 'chix.io'   ->  search Search
 
-Search error -> msg Log
 Search out   -> msg Log

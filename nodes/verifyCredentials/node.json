@@ -14,9 +14,6 @@
       }
     },
     "output":{
-      "error":{
-        "type":"object"
-      },
       "out":{
         "type":"object"
       }
