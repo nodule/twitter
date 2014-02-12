@@ -1,1 +1,1 @@
-output.twitter = new ntwitter(input)
+output.twitter = new twitter(input)
