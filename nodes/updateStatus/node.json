@@ -11,6 +11,11 @@
         "type":"Twitter",
         "title":"Twitter",
         "required": true
+      },
+      "message":{
+        "type":"string",
+        "title":"Message",
+        "required": true
       }
     },
     "output":{
