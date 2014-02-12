@@ -1,0 +1,54 @@
+{
+  "name":"statusesFilter",
+  "ns":"twitter",
+  "description":"Filter twitter statusus",
+  "phrases": {
+    "active": "Filtering twitter statusus"
+  },
+  "ports":{
+    "input":{
+      "twitter":{
+        "type":"Twitter",
+        "title":"Twitter",
+        "required": true
+      },
+      "parameters": {
+        "type":"object",
+        "title":"Parameters",
+        "required": true,
+        "properties": {
+          "follow": {
+            "type":"string",
+            "title":"Follow",
+            "required": false
+          },
+          "track": {
+            "type":"string",
+            "title":"Track",
+            "required": false
+          },
+          "locations": {
+            "type":"string",
+            "title":"locations",
+            "required": false
+          },
+          "delimited": {
+            "type":"string",
+            "title":"Delimited",
+            "required": false
+          },
+          "stall_warnings": {
+            "type":"string",
+            "title":"Delimited",
+            "required": false
+          }
+        }
+      }
+    },
+    "output":{
+      "stream":{
+        "type":"Stream"
+      }
+    }
+  }
+}

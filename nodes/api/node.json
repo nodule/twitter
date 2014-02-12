@@ -1,0 +1,40 @@
+{
+  "name":"api",
+  "ns":"twitter",
+  "description":"Twitter API",
+  "require":{
+    "ntwitter":"0.x.x"
+  },
+  "phrases": {
+    "active": "Starting Twitter API"
+  },
+  "ports":{
+    "input":{
+      "consumer_key":{
+        "type":"string",
+        "title":"Consumer Key",
+        "required": true
+      },
+      "consumer_secret":{
+        "type":"string",
+        "title":"Consumer Secret",
+        "required": true
+      },
+      "access_token_key":{
+        "type":"string",
+        "title":"Access Token Key",
+        "required": true
+      },
+      "access_token_secret":{
+        "type":"string",
+        "title":"Access Token Secret",
+        "required": true
+      }
+    },
+    "output":{
+      "twitter":{
+        "type":"Twitter"
+      }
+    }
+  }
+}

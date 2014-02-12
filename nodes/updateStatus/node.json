@@ -1,0 +1,25 @@
+{
+  "name":"updateStatus",
+  "ns":"twitter",
+  "description":"Update twitter status",
+  "phrases": {
+    "active": "Updating twitter status"
+  },
+  "ports":{
+    "input":{
+      "twitter":{
+        "type":"Twitter",
+        "title":"Twitter",
+        "required": true
+      }
+    },
+    "output":{
+      "error":{
+        "type":"object"
+      },
+      "out":{
+        "type":"object"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name":"statusesSample",
+  "ns":"twitter",
+  "description":"Sample twitter statusus",
+  "phrases": {
+    "active": "Sampling twitter statusus"
+  },
+  "ports":{
+    "input":{
+      "twitter":{
+        "type":"Twitter",
+        "title":"Twitter",
+        "required": true
+      }
+    },
+    "output":{
+      "stream":{
+        "type":"Stream"
+      }
+    }
+  }
+}

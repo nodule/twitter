@@ -1,0 +1,282 @@
+{
+  "name": "twitter",
+  "description": "Twitter for Chiχ",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/twitter.git"
+  },
+  "dependencies": {
+    "ntwitter": "~0.5.0"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "consumer_key": {
+            "type": "string",
+            "title": "Consumer Key",
+            "required": true
+          },
+          "consumer_secret": {
+            "type": "string",
+            "title": "Consumer Secret",
+            "required": true
+          },
+          "access_token_key": {
+            "type": "string",
+            "title": "Access Token Key",
+            "required": true
+          },
+          "access_token_secret": {
+            "type": "string",
+            "title": "Access Token Secret",
+            "required": true
+          }
+        },
+        "output": {
+          "twitter": {
+            "type": "Twitter"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Starting Twitter API"
+      },
+      "require": {
+        "ntwitter": "0.x.x"
+      },
+      "description": "Twitter API",
+      "ns": "twitter",
+      "name": "api",
+      "fn": "output.twitter = new ntwitter(input)\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
+          },
+          "search": {
+            "type": "string",
+            "title": "Search",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "type": "object"
+          },
+          "out": {
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Searching twitter for {{input.in}}"
+      },
+      "description": "Twitter search",
+      "ns": "twitter",
+      "name": "search",
+      "fn": "output = [input.twitter, 'search', input.search]\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
+          },
+          "parameters": {
+            "type": "object",
+            "title": "Parameters",
+            "required": true,
+            "properties": {
+              "follow": {
+                "type": "string",
+                "title": "Follow",
+                "required": false
+              },
+              "track": {
+                "type": "string",
+                "title": "Track",
+                "required": false
+              },
+              "locations": {
+                "type": "string",
+                "title": "locations",
+                "required": false
+              },
+              "delimited": {
+                "type": "string",
+                "title": "Delimited",
+                "required": false
+              },
+              "stall_warnings": {
+                "type": "string",
+                "title": "Delimited",
+                "required": false
+              }
+            }
+          }
+        },
+        "output": {
+          "stream": {
+            "type": "Stream"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Filtering twitter statusus"
+      },
+      "description": "Filter twitter statusus",
+      "ns": "twitter",
+      "name": "statusesFilter",
+      "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'status/filter', input.parameters]\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "type": "Stream"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Sampling twitter statusus"
+      },
+      "description": "Sample twitter statusus",
+      "ns": "twitter",
+      "name": "statusesSample",
+      "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'status/sample']\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "type": "object"
+          },
+          "out": {
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Updating twitter status"
+      },
+      "description": "Update twitter status",
+      "ns": "twitter",
+      "name": "updateStatus",
+      "fn": "output = [input.twitter, 'updateStatus', input.message]\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
+          },
+          "parameters": {
+            "type": "object",
+            "title": "Parameters",
+            "required": true,
+            "properties": {
+              "delimited": {
+                "type": "boolean",
+                "title": "Delimited",
+                "required": false
+              },
+              "track": {
+                "type": "string",
+                "title": "Track",
+                "default": false
+              },
+              "with": {
+                "type": "boolean",
+                "title": "Width",
+                "default": false
+              },
+              "locations": {
+                "type": "string",
+                "title": "locations",
+                "required": false
+              },
+              "replies": {
+                "type": "boolean",
+                "title": "Replies",
+                "default": false
+              },
+              "stall_warnings": {
+                "type": "string",
+                "title": "Delimited",
+                "default": false
+              },
+              "stringify_friends_ids": {
+                "type": "boolean",
+                "title": "Stringify Friends Ids",
+                "default": false
+              }
+            }
+          }
+        },
+        "output": {
+          "stream": {
+            "type": "Stream"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Streaming user stream"
+      },
+      "description": "twitter users",
+      "ns": "twitter",
+      "name": "user",
+      "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'user', input.parameters]\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "type": "object"
+          },
+          "out": {
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Verifying credentials"
+      },
+      "description": "Twitter Verify Credentials",
+      "ns": "twitter",
+      "name": "verifyCredentials",
+      "fn": "output = [input.twitter, 'verifyCredentials']\n"
+    }
+  ],
+  "twigs": []
+}

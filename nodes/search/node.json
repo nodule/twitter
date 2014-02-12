@@ -1,0 +1,30 @@
+{
+  "name":"search",
+  "ns":"twitter",
+  "description":"Twitter search",
+  "phrases": {
+    "active": "Searching twitter for {{input.in}}"
+  },
+  "ports":{
+    "input":{
+      "twitter":{
+        "type":"Twitter",
+        "title":"Twitter",
+        "required": true
+      },
+      "search":{
+        "type":"string",
+        "title":"Search",
+        "required": true
+      }
+    },
+    "output":{
+      "error":{
+        "type":"object"
+      },
+      "out":{
+        "type":"object"
+      }
+    }
+  }
+}
