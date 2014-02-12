@@ -3,7 +3,7 @@
   "ns":"twitter",
   "description":"Twitter API",
   "require":{
-    "ntwitter":"gdi2290/ntwitter"
+    "twitter":"twitter"
   },
   "phrases": {
     "active": "Starting Twitter API"
