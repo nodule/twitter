@@ -6,20 +6,16 @@ Search(twitter/search)
 UpdateStatus(twitter/updateStatus)
 Log(console/log)
 
-'vdYfSSDHTPMCSl2tMLB1w'                              -> consumer_key Api
-'TgUgwnsGw3beFxlPXHuuyfwI8xJGkQzbZLpqkGQCRc'         -> consumer_secret Api
-'376833104-3B9FOgGj94KCpvEh5n23zD0BfdFKwjsHb5B01vrj' -> access_token_key Api
-'1rGM9swyN1rALnlqxoJRkriJEAvpKFzMQnEBXnQf07PJU'      -> access_token_secret Api
+'**********************' -> consumer_key Api
+'**********************' -> consumer_secret Api
+'**********************' -> access_token_key Api
+'**********************' -> access_token_secret Api
 
-
-'First ever mention of chix.io on Twitter' -> message UpdateStatus
-
-Api twitter -> ^twitter UpdateStatus
-
-UpdateStatus error -> msg Log
-UpdateStatus out   -> msg Log
-
-UpdateStatus :complete -> :start Search
+# Api twitter -> ^twitter UpdateStatus
+# 'First ever mention of chix.io on Twitter' -> message UpdateStatus
+# UpdateStatus error -> msg Log
+# UpdateStatus out   -> msg Log
+# UpdateStatus :complete -> :start Search
 
 Api twitter -> ^twitter Search
 'chix.io'   ->  search Search
