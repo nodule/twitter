@@ -1,0 +1,17 @@
+title: Twitter API
+description: Playing with twitter
+
+Api(twitter/api)
+Search(twitter/search)
+Log(console/log)
+
+'vdYfSSDHTPMCSl2tMLB1w'                              -> consumer_key Api
+'TgUgwnsGw3beFxlPXHuuyfwI8xJGkQzbZLpqkGQCRc'         -> consumer_secret Api
+'376833104-3B9FOgGj94KCpvEh5n23zD0BfdFKwjsHb5B01vrj' -> access_token_key Api
+'1rGM9swyN1rALnlqxoJRkriJEAvpKFzMQnEBXnQf07PJU'      -> access_token_secret Api
+
+Api twitter -> twitter Search
+'node.js'   ->  search Search
+
+Search error -> msg Log
+Search out   -> msg Log

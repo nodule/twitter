@@ -12,7 +12,7 @@
     "node": ">=0.6.0"
   },
   "dependencies": {
-    "ntwitter": "~0.5.0"
+    "ntwitter": "gdi2290/ntwitter"
   },
   "devDependencies": {
     "chit": "0.x.x"
