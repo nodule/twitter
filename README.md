@@ -1,4 +1,4 @@
-Chiχ Template Engines
+Twitter for Chiχ
 =====================
 
-[![Build Status](https://travis-ci.org/nodule/template.png)](https://travis-ci.org/nodule/template)
+[![Build Status](https://travis-ci.org/nodule/twitter.png)](https://travis-ci.org/nodule/twitter)
