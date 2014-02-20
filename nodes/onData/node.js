@@ -1,5 +1,5 @@
 output = function(cb) {
-  input.stream.on('data', function(chunk) {
+  input.in.on('data', function(chunk) {
     cb({ out: chunk } );
   });
 };
