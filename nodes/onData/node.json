@@ -1,0 +1,23 @@
+{
+  "name": "onData",
+  "ns": "twitter",
+  "description": "Listen to a twitter stream",
+  "phrases": {
+    "active": "Receiving data..."
+  },
+  "ports": {
+    "input": {
+      "in": {
+        "title": "Stream",
+        "type": "EventEmitter",
+        "required": true
+      }
+    },
+    "output": {
+      "out": {
+        "title": "Data",
+        "type": "any"
+      }
+    }
+  }
+}

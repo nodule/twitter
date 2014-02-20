@@ -7,7 +7,7 @@
     "url": "https://github.com/nodule/twitter.git"
   },
   "dependencies": {
-    "ntwitter": "~0.5.0"
+    "twitter": "0.x.x"
   },
   "nodes": [
     {
@@ -44,12 +44,36 @@
         "active": "Starting Twitter API"
       },
       "require": {
-        "ntwitter": "0.x.x"
+        "twitter": "twitter"
       },
       "description": "Twitter API",
       "ns": "twitter",
       "name": "api",
-      "fn": "output.twitter = new ntwitter(input)\n"
+      "fn": "output.twitter = new twitter(input)\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
+            "title": "Stream",
+            "type": "EventEmitter",
+            "required": true
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Data",
+            "type": "any"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Receiving data..."
+      },
+      "description": "Listen to a twitter stream",
+      "ns": "twitter",
+      "name": "onData",
+      "fn": "output = function(cb) {\n  input.stream.on('data', function(chunk) {\n    cb({ out: chunk } );\n  });\n};\n"
     },
     {
       "ports": {
@@ -66,9 +90,6 @@
           }
         },
         "output": {
-          "error": {
-            "type": "object"
-          },
           "out": {
             "type": "object"
           }
@@ -167,12 +188,85 @@
             "type": "Twitter",
             "title": "Twitter",
             "required": true
+          },
+          "endpoint": {
+            "type": "string",
+            "title": "Endpoint",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "Optons",
+            "required": false,
+            "properties": {
+              "delimited": {
+                "type": "boolean",
+                "title": "Delimited",
+                "required": false
+              },
+              "track": {
+                "type": "string",
+                "title": "Track",
+                "default": false
+              },
+              "with": {
+                "type": "boolean",
+                "title": "Width",
+                "default": false
+              },
+              "locations": {
+                "type": "string",
+                "title": "locations",
+                "required": false
+              },
+              "replies": {
+                "type": "boolean",
+                "title": "Replies",
+                "default": false
+              },
+              "stall_warnings": {
+                "type": "string",
+                "title": "Delimited",
+                "default": false
+              },
+              "stringify_friends_ids": {
+                "type": "boolean",
+                "title": "Stringify Friends Ids",
+                "default": false
+              }
+            }
           }
         },
         "output": {
-          "error": {
-            "type": "object"
+          "out": {
+            "type": "EventEmitter",
+            "description": "A Stream-like EventEmitter"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Streaming {{input.endpoint}}"
+      },
+      "description": "Twitter Stream",
+      "ns": "twitter",
+      "name": "stream",
+      "fn": "// ok streams should be installed async\nif(input.options && Object.keys(input.options).length) {\n  output = [input.twitter, 'stream', input.endpoint, input.options]\n} else {\n  output = [input.twitter, 'stream', input.endpoint]\n}\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
           },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "required": true
+          }
+        },
+        "output": {
           "out": {
             "type": "object"
           }
@@ -261,9 +355,6 @@
           }
         },
         "output": {
-          "error": {
-            "type": "object"
-          },
           "out": {
             "type": "object"
           }
