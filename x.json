@@ -44,7 +44,7 @@
         "active": "Starting Twitter API"
       },
       "require": {
-        "twitter": "twitter"
+        "twitter": "0.x.x"
       },
       "description": "Twitter API",
       "ns": "twitter",
@@ -73,7 +73,7 @@
       "description": "Listen to a twitter stream",
       "ns": "twitter",
       "name": "onData",
-      "fn": "output = function(cb) {\n  input.stream.on('data', function(chunk) {\n    cb({ out: chunk } );\n  });\n};\n"
+      "fn": "output = function(cb) {\n  input.in.on('data', function(chunk) {\n    cb({ out: chunk } );\n  });\n};\n"
     },
     {
       "ports": {
@@ -180,6 +180,61 @@
       "ns": "twitter",
       "name": "statusesSample",
       "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'status/sample']\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "twitter": {
+            "type": "Twitter",
+            "title": "Twitter",
+            "required": true
+          },
+          "parameters": {
+            "type": "object",
+            "title": "Parameters",
+            "required": true,
+            "properties": {
+              "follow": {
+                "type": "string",
+                "title": "Follow",
+                "required": false
+              },
+              "track": {
+                "type": "string",
+                "title": "Track",
+                "required": false
+              },
+              "locations": {
+                "type": "string",
+                "title": "locations",
+                "required": false
+              },
+              "delimited": {
+                "type": "string",
+                "title": "Delimited",
+                "required": false
+              },
+              "stall_warnings": {
+                "type": "string",
+                "title": "Delimited",
+                "required": false
+              }
+            }
+          }
+        },
+        "output": {
+          "stream": {
+            "type": "Stream"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Filtering twitter statusus"
+      },
+      "description": "Filter twitter statusus",
+      "ns": "twitter",
+      "name": "statusesFilter",
+      "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'status/filter', input.parameters]\n"
     },
     {
       "ports": {
