@@ -1,63 +1,63 @@
 {
-  "name":"user",
-  "ns":"twitter",
-  "description":"twitter users",
+  "name": "user",
+  "ns": "twitter",
+  "description": "twitter users",
   "phrases": {
     "active": "Streaming user stream"
   },
-  "ports":{
-    "input":{
-      "twitter":{
-        "type":"Twitter",
-        "title":"Twitter",
+  "ports": {
+    "input": {
+      "twitter": {
+        "type": "Twitter",
+        "title": "Twitter",
         "required": true
       },
       "parameters": {
-        "type":"object",
-        "title":"Parameters",
+        "type": "object",
+        "title": "Parameters",
         "required": true,
         "properties": {
           "delimited": {
-            "type":"boolean",
-            "title":"Delimited",
+            "type": "boolean",
+            "title": "Delimited",
             "required": false
           },
           "track": {
-            "type":"string",
-            "title":"Track",
+            "type": "string",
+            "title": "Track",
             "default": false
           },
           "with": {
-            "type":"boolean",
-            "title":"Width",
+            "type": "boolean",
+            "title": "Width",
             "default": false
           },
           "locations": {
-            "type":"string",
-            "title":"locations",
+            "type": "string",
+            "title": "locations",
             "required": false
           },
           "replies": {
-            "type":"boolean",
-            "title":"Replies",
+            "type": "boolean",
+            "title": "Replies",
             "default": false
           },
           "stall_warnings": {
-            "type":"string",
-            "title":"Delimited",
+            "type": "string",
+            "title": "Delimited",
             "default": false
           },
           "stringify_friends_ids": {
-            "type":"boolean",
-            "title":"Stringify Friends Ids",
+            "type": "boolean",
+            "title": "Stringify Friends Ids",
             "default": false
           }
         }
       }
     },
-    "output":{
-      "stream":{
-        "type":"Stream"
+    "output": {
+      "stream": {
+        "type": "Stream"
       }
     }
   }

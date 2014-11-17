@@ -1,40 +1,42 @@
 {
-  "name":"api",
-  "ns":"twitter",
-  "description":"Twitter API",
-  "require":{
-    "twitter":"0.x.x"
-  },
+  "name": "api",
+  "ns": "twitter",
+  "description": "Twitter API",
   "phrases": {
     "active": "Starting Twitter API"
   },
-  "ports":{
-    "input":{
-      "consumer_key":{
-        "type":"string",
-        "title":"Consumer Key",
+  "ports": {
+    "input": {
+      "consumer_key": {
+        "type": "string",
+        "title": "Consumer Key",
         "required": true
       },
-      "consumer_secret":{
-        "type":"string",
-        "title":"Consumer Secret",
+      "consumer_secret": {
+        "type": "string",
+        "title": "Consumer Secret",
         "required": true
       },
-      "access_token_key":{
-        "type":"string",
-        "title":"Access Token Key",
+      "access_token_key": {
+        "type": "string",
+        "title": "Access Token Key",
         "required": true
       },
-      "access_token_secret":{
-        "type":"string",
-        "title":"Access Token Secret",
+      "access_token_secret": {
+        "type": "string",
+        "title": "Access Token Secret",
         "required": true
       }
     },
-    "output":{
-      "twitter":{
-        "type":"Twitter"
+    "output": {
+      "twitter": {
+        "type": "Twitter"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "twitter": "0.x.x"
     }
   }
 }

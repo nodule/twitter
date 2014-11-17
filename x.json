@@ -11,6 +11,11 @@
   },
   "nodes": [
     {
+      "dependencies": {
+        "npm": {
+          "twitter": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "consumer_key": {
@@ -42,9 +47,6 @@
       },
       "phrases": {
         "active": "Starting Twitter API"
-      },
-      "require": {
-        "twitter": "0.x.x"
       },
       "description": "Twitter API",
       "ns": "twitter",

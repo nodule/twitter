@@ -1,21 +1,21 @@
 {
-  "name":"verifyCredentials",
-  "ns":"twitter",
-  "description":"Twitter Verify Credentials",
+  "name": "verifyCredentials",
+  "ns": "twitter",
+  "description": "Twitter Verify Credentials",
   "phrases": {
     "active": "Verifying credentials"
   },
-  "ports":{
-    "input":{
-      "twitter":{
-        "type":"Twitter",
-        "title":"Twitter",
+  "ports": {
+    "input": {
+      "twitter": {
+        "type": "Twitter",
+        "title": "Twitter",
         "required": true
       }
     },
-    "output":{
-      "out":{
-        "type":"object"
+    "output": {
+      "out": {
+        "type": "object"
       }
     }
   }
