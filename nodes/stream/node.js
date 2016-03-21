@@ -1,6 +1,6 @@
 // ok streams should be installed async
-if(input.options && Object.keys(input.options).length) {
-  output = [input.twitter, 'stream', input.endpoint, input.options]
+if($.options && Object.keys($.options).length) {
+  output = [$.twitter, 'stream', $.endpoint, $.options]
 } else {
-  output = [input.twitter, 'stream', input.endpoint]
+  output = [$.twitter, 'stream', $.endpoint]
 }

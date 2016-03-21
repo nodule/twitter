@@ -1,1 +1,1 @@
-output = [input.twitter, 'verifyCredentials']
+output = [$.twitter, 'verifyCredentials']

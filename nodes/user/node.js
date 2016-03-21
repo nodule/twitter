@@ -1,2 +1,2 @@
 // ok streams should be installed async
-output = [input.twitter, 'stream', 'user', input.parameters]
+output = [$.twitter, 'stream', 'user', $.parameters]

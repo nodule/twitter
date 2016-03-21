@@ -1,1 +1,1 @@
-output = [input.twitter, 'updateStatus', input.message]
+output = [$.twitter, 'updateStatus', $.message]

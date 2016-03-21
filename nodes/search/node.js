@@ -1,1 +1,1 @@
-output = [input.twitter, 'search', input.search]
+output = [$.twitter, 'search', $.search]
