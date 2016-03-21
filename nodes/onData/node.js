@@ -1,5 +1,5 @@
 output = function(cb) {
   $.in.on('data', function(chunk) {
-    cb({ out: chunk } );
+    cb({ out: $.create(chunk) } );
   });
 };
