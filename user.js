@@ -1,9 +1,9 @@
 module.exports = {
-  name: "statusesFilter",
+  name: "user",
   ns: "twitter",
-  description: "Filter twitter statusus",
+  description: "twitter users",
   phrases: {
-    active: "Filtering twitter statusus"
+    active: "Streaming user stream"
   },
   ports: {
     input: {
@@ -17,30 +17,40 @@ module.exports = {
         title: "Parameters",
         required: true,
         properties: {
-          follow: {
-            type: "string",
-            title: "Follow",
+          delimited: {
+            type: "boolean",
+            title: "Delimited",
             required: false
           },
           track: {
             type: "string",
             title: "Track",
-            required: false
+            "default": false
+          },
+          "with": {
+            type: "boolean",
+            title: "Width",
+            "default": false
           },
           locations: {
             type: "string",
             title: "locations",
             required: false
           },
-          delimited: {
-            type: "string",
-            title: "Delimited",
-            required: false
+          replies: {
+            type: "boolean",
+            title: "Replies",
+            "default": false
           },
           stall_warnings: {
             type: "string",
             title: "Delimited",
-            required: false
+            "default": false
+          },
+          stringify_friends_ids: {
+            type: "boolean",
+            title: "Stringify Friends Ids",
+            "default": false
           }
         }
       }
@@ -51,10 +61,10 @@ module.exports = {
       }
     }
   },
-  fn: function statusesFilter(input, $, output, state, done, cb, on) {
+  fn: function user(input, $, output, state, done, cb, on) {
     var r = function() {
       // ok streams should be installed async
-      $.twitter.statusesFilter('status/filter', $.parameters, function statusesFilterCallback(stream) {
+      $.twitter.user('user', $.parameters, function userCallback(stream) {
         cb({
           stream: stream
         });

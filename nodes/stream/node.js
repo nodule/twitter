@@ -1,6 +1,9 @@
-// ok streams should be installed async
-if($.options && Object.keys($.options).length) {
-  output = [$.twitter, 'stream', $.endpoint, $.options]
-} else {
-  output = [$.twitter, 'stream', $.endpoint]
+output = function() {
+  $.twitter.stream($.endpoint, $options, function (err, ev) {
+    if (err) {
+      cb({error: $.create(err)})
+    } else {
+      cb({out: $.create(ev)})
+    }
+  })
 }

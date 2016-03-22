@@ -54,7 +54,7 @@ module.exports = {
   fn: function statusesFilter(input, $, output, state, done, cb, on) {
     var r = function() {
       // ok streams should be installed async
-      $.twitter.statusesFilter('status/filter', $.parameters, function statusesFilterCallback(stream) {
+      input.twitter.statusesFilter('status/filter', input.parameters, function statusesFilterCallback(stream) {
         cb({
           stream: stream
         });

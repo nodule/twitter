@@ -51,7 +51,7 @@
       "description": "Twitter API",
       "ns": "twitter",
       "name": "api",
-      "fn": "output.twitter = new twitter(input)\n"
+      "fn": "output.twitter = $.create(new twitter({\n  comsumer_key: $.consumer_key,\n  comsumer_secret: $.consumer_secret,\n  access_token_key: $.access_token_key,\n  access_token_secret: $.access_token_secret\n}))\n"
     },
     {
       "ports": {
@@ -75,7 +75,7 @@
       "description": "Listen to a twitter stream",
       "ns": "twitter",
       "name": "onData",
-      "fn": "output = function(cb) {\n  input.in.on('data', function(chunk) {\n    cb({ out: chunk } );\n  });\n};\n"
+      "fn": "output = function(cb) {\n  $.in.on('data', function(chunk) {\n    cb({ out: $.create(chunk) } );\n  });\n};\n"
     },
     {
       "ports": {
@@ -103,7 +103,7 @@
       "description": "Twitter search",
       "ns": "twitter",
       "name": "search",
-      "fn": "output = [input.twitter, 'search', input.search]\n"
+      "fn": "output = [$.twitter, 'search', $.search]\n"
     },
     {
       "ports": {
@@ -158,7 +158,7 @@
       "description": "Filter twitter statusus",
       "ns": "twitter",
       "name": "statusesFilter",
-      "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'status/filter', input.parameters]\n"
+      "fn": "// ok streams should be installed async\noutput = [$.twitter, 'stream', 'status/filter', $.parameters]\n"
     },
     {
       "ports": {
@@ -181,7 +181,7 @@
       "description": "Sample twitter statusus",
       "ns": "twitter",
       "name": "statusesSample",
-      "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'status/sample']\n"
+      "fn": "// ok streams should be installed async\noutput = [$.twitter, 'stream', 'status/sample']\n"
     },
     {
       "ports": {
@@ -307,7 +307,7 @@
       "description": "Twitter Stream",
       "ns": "twitter",
       "name": "stream",
-      "fn": "// ok streams should be installed async\nif(input.options && Object.keys(input.options).length) {\n  output = [input.twitter, 'stream', input.endpoint, input.options]\n} else {\n  output = [input.twitter, 'stream', input.endpoint]\n}\n"
+      "fn": "output = function() {\n  $.twitter.stream($.endpoint, $options, function (err, ev) {\n    if (err) {\n      cb({error: $.create(err)})\n    } else {\n      cb({out: $.create(ev)})\n    }\n  })\n}\n"
     },
     {
       "ports": {
@@ -335,7 +335,7 @@
       "description": "Update twitter status",
       "ns": "twitter",
       "name": "updateStatus",
-      "fn": "output = [input.twitter, 'updateStatus', input.message]\n"
+      "fn": "output = [$.twitter, 'updateStatus', $.message]\n"
     },
     {
       "ports": {
@@ -400,7 +400,7 @@
       "description": "twitter users",
       "ns": "twitter",
       "name": "user",
-      "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'user', input.parameters]\n"
+      "fn": "// ok streams should be installed async\noutput = [$.twitter, 'stream', 'user', $.parameters]\n"
     },
     {
       "ports": {
@@ -423,7 +423,7 @@
       "description": "Twitter Verify Credentials",
       "ns": "twitter",
       "name": "verifyCredentials",
-      "fn": "output = [input.twitter, 'verifyCredentials']\n"
+      "fn": "output = [$.twitter, 'verifyCredentials']\n"
     }
   ],
   "twigs": []

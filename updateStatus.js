@@ -1,9 +1,9 @@
 module.exports = {
-  name: "search",
+  name: "updateStatus",
   ns: "twitter",
-  description: "Twitter search",
+  description: "Update twitter status",
   phrases: {
-    active: "Searching twitter for {{input.in}}"
+    active: "Updating twitter status"
   },
   ports: {
     input: {
@@ -12,9 +12,9 @@ module.exports = {
         title: "Twitter",
         required: true
       },
-      search: {
+      message: {
         type: "string",
-        title: "Search",
+        title: "Message",
         required: true
       }
     },
@@ -24,9 +24,9 @@ module.exports = {
       }
     }
   },
-  fn: function search(input, $, output, state, done, cb, on) {
+  fn: function updateStatus(input, $, output, state, done, cb, on) {
     var r = function() {
-      $.twitter.search($.search, function searchCallback(out) {
+      $.twitter.updateStatus($.message, function updateStatusCallback(out) {
         cb({
           out: out
         });

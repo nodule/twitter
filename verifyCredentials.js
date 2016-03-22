@@ -1,9 +1,9 @@
 module.exports = {
-  name: "statusesSample",
+  name: "verifyCredentials",
   ns: "twitter",
-  description: "Sample twitter statusus",
+  description: "Twitter Verify Credentials",
   phrases: {
-    active: "Sampling twitter statusus"
+    active: "Verifying credentials"
   },
   ports: {
     input: {
@@ -14,17 +14,16 @@ module.exports = {
       }
     },
     output: {
-      stream: {
-        type: "Stream"
+      out: {
+        type: "object"
       }
     }
   },
-  fn: function statusesSample(input, $, output, state, done, cb, on) {
+  fn: function verifyCredentials(input, $, output, state, done, cb, on) {
     var r = function() {
-      // ok streams should be installed async
-      $.twitter.statusesSample('status/sample', function statusesSampleCallback(stream) {
+      $.twitter.verifyCredentials(function verifyCredentialsCallback(out) {
         cb({
-          stream: stream
+          out: out
         });
       });
     }.call(this);
