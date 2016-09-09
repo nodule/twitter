@@ -11,10 +11,11 @@
   },
   "nodes": [
     {
-      "dependencies": {
-        "npm": {
-          "twitter": "0.x.x"
-        }
+      "name": "api",
+      "ns": "twitter",
+      "description": "Twitter API",
+      "phrases": {
+        "active": "Starting Twitter API"
       },
       "ports": {
         "input": {
@@ -45,15 +46,20 @@
           }
         }
       },
-      "phrases": {
-        "active": "Starting Twitter API"
+      "dependencies": {
+        "npm": {
+          "twitter": "0.x.x"
+        }
       },
-      "description": "Twitter API",
-      "ns": "twitter",
-      "name": "api",
       "fn": "output.twitter = $.create(new twitter({\n  comsumer_key: $.consumer_key,\n  comsumer_secret: $.consumer_secret,\n  access_token_key: $.access_token_key,\n  access_token_secret: $.access_token_secret\n}))\n"
     },
     {
+      "name": "onData",
+      "ns": "twitter",
+      "description": "Listen to a twitter stream",
+      "phrases": {
+        "active": "Receiving data..."
+      },
       "ports": {
         "input": {
           "in": {
@@ -69,15 +75,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Receiving data..."
-      },
-      "description": "Listen to a twitter stream",
-      "ns": "twitter",
-      "name": "onData",
       "fn": "output = function(cb) {\n  $.in.on('data', function(chunk) {\n    cb({ out: $.create(chunk) } );\n  });\n};\n"
     },
     {
+      "name": "search",
+      "ns": "twitter",
+      "description": "Twitter search",
+      "phrases": {
+        "active": "Searching twitter for {{input.in}}"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -97,15 +103,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Searching twitter for {{input.in}}"
-      },
-      "description": "Twitter search",
-      "ns": "twitter",
-      "name": "search",
       "fn": "output = [$.twitter, 'search', $.search]\n"
     },
     {
+      "name": "statusesFilter",
+      "ns": "twitter",
+      "description": "Filter twitter statusus",
+      "phrases": {
+        "active": "Filtering twitter statusus"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -152,15 +158,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Filtering twitter statusus"
-      },
-      "description": "Filter twitter statusus",
-      "ns": "twitter",
-      "name": "statusesFilter",
       "fn": "// ok streams should be installed async\noutput = [$.twitter, 'stream', 'status/filter', $.parameters]\n"
     },
     {
+      "name": "statusesSample",
+      "ns": "twitter",
+      "description": "Sample twitter statusus",
+      "phrases": {
+        "active": "Sampling twitter statusus"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -175,15 +181,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Sampling twitter statusus"
-      },
-      "description": "Sample twitter statusus",
-      "ns": "twitter",
-      "name": "statusesSample",
       "fn": "// ok streams should be installed async\noutput = [$.twitter, 'stream', 'status/sample']\n"
     },
     {
+      "name": "statusesFilter",
+      "ns": "twitter",
+      "description": "Filter twitter statusus",
+      "phrases": {
+        "active": "Filtering twitter statusus"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -230,15 +236,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Filtering twitter statusus"
-      },
-      "description": "Filter twitter statusus",
-      "ns": "twitter",
-      "name": "statusesFilter",
       "fn": "// ok streams should be installed async\noutput = [input.twitter, 'stream', 'status/filter', input.parameters]\n"
     },
     {
+      "name": "stream",
+      "ns": "twitter",
+      "description": "Twitter Stream",
+      "phrases": {
+        "active": "Streaming {{input.endpoint}}"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -301,15 +307,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Streaming {{input.endpoint}}"
-      },
-      "description": "Twitter Stream",
-      "ns": "twitter",
-      "name": "stream",
       "fn": "output = function() {\n  $.twitter.stream($.endpoint, $options, function (err, ev) {\n    if (err) {\n      cb({error: $.create(err)})\n    } else {\n      cb({out: $.create(ev)})\n    }\n  })\n}\n"
     },
     {
+      "name": "updateStatus",
+      "ns": "twitter",
+      "description": "Update twitter status",
+      "phrases": {
+        "active": "Updating twitter status"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -329,15 +335,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Updating twitter status"
-      },
-      "description": "Update twitter status",
-      "ns": "twitter",
-      "name": "updateStatus",
       "fn": "output = [$.twitter, 'updateStatus', $.message]\n"
     },
     {
+      "name": "user",
+      "ns": "twitter",
+      "description": "twitter users",
+      "phrases": {
+        "active": "Streaming user stream"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -394,15 +400,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Streaming user stream"
-      },
-      "description": "twitter users",
-      "ns": "twitter",
-      "name": "user",
       "fn": "// ok streams should be installed async\noutput = [$.twitter, 'stream', 'user', $.parameters]\n"
     },
     {
+      "name": "verifyCredentials",
+      "ns": "twitter",
+      "description": "Twitter Verify Credentials",
+      "phrases": {
+        "active": "Verifying credentials"
+      },
       "ports": {
         "input": {
           "twitter": {
@@ -417,14 +423,7 @@
           }
         }
       },
-      "phrases": {
-        "active": "Verifying credentials"
-      },
-      "description": "Twitter Verify Credentials",
-      "ns": "twitter",
-      "name": "verifyCredentials",
       "fn": "output = [$.twitter, 'verifyCredentials']\n"
     }
-  ],
-  "twigs": []
+  ]
 }
