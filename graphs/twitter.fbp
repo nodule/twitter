@@ -12,7 +12,6 @@ Log(console/log)
 '**********************' -> access_token_secret Api
 
 # Api twitter -> ^twitter UpdateStatus
-# 'First ever mention of chix.io on Twitter' -> message UpdateStatus
 # UpdateStatus out   -> msg Log
 # UpdateStatus :complete -> :start Search
 
